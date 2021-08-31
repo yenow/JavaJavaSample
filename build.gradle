@@ -1,7 +1,3 @@
-/*
-주석처리가 되는거였냐구~~
-* */
-
 plugins {
     id 'org.springframework.boot' version '2.5.2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
