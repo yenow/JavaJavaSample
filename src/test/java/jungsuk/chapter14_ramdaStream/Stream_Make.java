@@ -3,6 +3,10 @@ package jungsuk.chapter14_ramdaStream;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -11,7 +15,7 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
-public class MakeStream {
+public class Stream_Make {
 
     /*
     @Title : 스트림(stream)
@@ -129,48 +133,67 @@ public class MakeStream {
         IntStream intStream2 = new Random().ints().limit(5);  // 유한스트림
         LongStream longStream2 = new Random().longs().limit(5);
         DoubleStream doubleStream2 = new Random().doubles().limit(5);
+
+        // 값의 범위내에서 난수 유한스트림
+        IntStream intStream3 = new Random().ints(1,10).limit(5);
+        LongStream longStream3 = new Random().longs(1,10).limit(5);
+
+        intStream3.forEach(System.out::println);
+        longStream3.forEach(System.out::println);
     }
 
-    /* 스트림의 소스가 될 수 있는 대상은 배열, 컬렉션, 임의의 수 등 다양 */
+    /*
+    @Title : l20_스트림만들기_특정범위의정수
+	@Content
+	    - IntStream과 LongStream은 지정된 범위의 연속된 정수를 생성해서 반환하는 range()와 rangeClosed() 메서드를 가지고 있다.
+	    - range()는 경계의 끝인 end가 범위에 포함되지 않고, rangeClosed()의 경우는 포함된다.
+     */
     @Test
-    public void 스트림만들기_컬렉션() {
-        List<Integer> list = Arrays.asList(1,2,3,4,5);
-        Stream<Integer> intStream = list.stream();
+    public void l20_스트림만들기_특정범위의정수() {
+        IntStream intStream = IntStream.range(1,5);
+        IntStream intStream2 = IntStream.rangeClosed(1,5);
 
-        intStream.forEach((i)->{
-            System.out.println(i);
-        });
-        // intStream.forEach(System.out::println);  // 스트림은 두번 사용할 수 없다.
+        intStream.forEach(System.out::println);
+        intStream2.forEach(System.out::println);
+
     }
 
-
+    /*
+    @Title : l21_스트림만들기_람다식
+	@Content
+	    - Stream 클래스의 iterate()와 generate()메서드는 람다식을 매개변수로 받아서, 이 람다식에 의해 계산되는 값들을 요소로하는 무한 스트림 생성	  
+	    - 위 두 함수는 기본형 스트림 타입의 참조변수로 사용할수 없다 (IntStream으로 반환 불가능)
+     */
     @Test
-    public void 스트림만들기_배열 () {
+    public void l21_스트림만들기_람다식 () {
+        // iterate()의 첫번째 매개변수는 seed값으로 시작값을 지정한다.
+        Stream<Integer> evenStream = Stream.iterate(0, n->n+2).limit(5);
 
-        Stream<String> strStream1 = Stream.of("1","2","3","4");
-        Stream<String> strStream2 = Stream.of(new String[] {"a","b","c"});
-        Stream<String> strStream3 = Arrays.stream(new String[]{"a","b","c"});
+        // generate()는 이전 결과를 이용해서 다음요소를 계산하지는 않는다. 또한 매개변수 타입이  Supplier<T>로 매개변수가 없는 람다식만 허용이 된다.
+        Stream<Double> randowStream = Stream.generate(Math::random).limit(5);
 
-        //  int, long, double 과 같은 기본형 배열을 소스로 하는 스트림
-        IntStream intStream1 = IntStream.of(1,2,3,4);
-        IntStream intStream2 = Arrays.stream(new int[] {1,2,3,4});
+        evenStream.forEach(System.out::println);
+        randowStream.forEach(System.out::println);
     }
 
+    /*
+    @Title : l22_스트림만들기_파일과빈스트림
+	@Content
+	    - java.nio.file.Files는 파일을 다루는데 필요한 유용한 메서드들을 제공한다.
+	    - list()는 지정된 디렉토리에 있는 파일의 목록을 소스로 하는 스트림을 생성해서 반환한다.
+     */
     @Test
-    public void 스트림만들기_임의의수 () {
-        
-        // 난수의 범위는 그 자료형의 모든숫자
-        IntStream intStream = new Random().ints();
-        intStream.limit(5).forEach((i)->{
-            System.out.println(i);
-        });
+    public void l22_스트림만들기_파일과빈스트림 () {
+//        Path path = FileSystems.getDefault().getPath("logs", "access.log");
+//        try {
+//            Stream<Path> list = Files.list(path);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        // 빈스트림
+        Stream emptyStream = Stream.empty();
+        long count = emptyStream.count();
+        System.out.println(count);
     }
-
-    @Test
-    public void 스트림만들기_람다식 () {}
-
-    /* iterate()와 generate()는 람다식을 매개변수로 받아서, 이 람다식에 의해 계산되는 값들을 요소로하는 무한스트림을 생성 */
-
-    Stream<Integer> evenStream = Stream.iterate(0,n->n+2);
-    Stream<Double> generateStream = Stream.generate(Math::random);
 }
