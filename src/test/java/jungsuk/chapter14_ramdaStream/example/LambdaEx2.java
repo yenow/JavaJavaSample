@@ -1,4 +1,4 @@
-package jungsuk.chapter14_ramdaStream.Example;
+package jungsuk.chapter14_ramdaStream.example;
 
 class LambdaEx2 {
 	public static void main(String[] args) 	{

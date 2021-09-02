@@ -1,4 +1,4 @@
-package jungsuk.chapter13_enum;
+package jungsuk.chapter12_collection;
 
 import static org.junit.Assert.assertEquals;
 

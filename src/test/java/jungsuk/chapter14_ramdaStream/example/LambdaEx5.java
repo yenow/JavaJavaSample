@@ -1,4 +1,4 @@
-package jungsuk.chapter14_ramdaStream.Example;
+package jungsuk.chapter14_ramdaStream.example;
 
 import java.util.function.*;
 import java.util.*;
