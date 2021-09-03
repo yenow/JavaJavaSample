@@ -1,4 +1,4 @@
-package jungsuk.chapter12_collection;
+package jungsuk.chapter12_Generic;
 //package test.jungsuk.chapter12;
 //
 //import java.util.*;

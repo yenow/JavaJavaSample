@@ -1,4 +1,4 @@
-package jungsuk.chapter14_ramdaStream.example;
+package jungsuk.chapter14_Ramda_Stream.example;
 
 class LambdaEx1 {
 	static void execute(MyFunction f) { // 매개변수의 타입이 MyFunction인 메서드

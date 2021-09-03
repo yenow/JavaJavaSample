@@ -1,4 +1,4 @@
-package jungsuk.chapter12_collection;
+package jungsuk.chapter12_Generic;
 
 import java.util.ArrayList;
 

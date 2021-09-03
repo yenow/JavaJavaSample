@@ -1,4 +1,4 @@
-package jungsuk.chapter14_ramdaStream.example;
+package jungsuk.chapter14_Ramda_Stream.example;
 
 @FunctionalInterface
 interface MyFunction2 {

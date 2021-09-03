@@ -1,4 +1,4 @@
-package jungsuk.chapter12_collection;
+package jungsuk.chapter12_Generic;
 
 import static org.junit.Assert.assertEquals;
 

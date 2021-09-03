@@ -1,4 +1,4 @@
-package jungsuk.chapter14_ramdaStream;
+package jungsuk.chapter14_Ramda_Stream;
 
 
 
@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.function.*;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 //@SpringBootTest
 public class Ramda {
@@ -161,4 +160,6 @@ public class Ramda {
 interface FunctionEx {
 
 	public int test(int a, int b);
+
+	boolean equals(Object obj);  // equals는 Object에 있는 메서드라 에러가 나지 않는듯
 }
