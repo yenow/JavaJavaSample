@@ -22,6 +22,8 @@ public class Ramda {
 		// 반환문이 있는 메서드의경우, return문 대신 '식(expression)'으로 대신할 수 있다.
 		FunctionEx f = (int a, int b) -> { return a > b ? a : b; };
 		FunctionEx f2 = (int a, int b) ->  a > b ? a : b;
+		System.out.println(f.test(1,2));
+		System.out.println(f.testSout());
 
 		// 람다식에 선언된 매개변수의 타입은 추론이 가능한 경우는 생략할 수 있다.
 		FunctionEx f3 = (a, b) -> a > b ? a : b;
@@ -162,4 +164,8 @@ interface FunctionEx {
 	public int test(int a, int b);
 
 	boolean equals(Object obj);  // equals는 Object에 있는 메서드라 에러가 나지 않는듯
+
+	default String testSout() {
+		return "ab";
+	}
 }

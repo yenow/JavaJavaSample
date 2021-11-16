@@ -81,7 +81,7 @@ public class Stream_Calculate {
         // filter
         // 매개변수로 Predicate를 필요로함 ,필터를 다른조건으로 여러번 사용하는것도 가능
         IntStream filterStream = Arrays.stream(new int[]{1,2,1,2,3,4,5,1,2,});
-        filterStream.filter(i -> i%2==0).filter(i -> i==2).forEach(value -> System.out.print(value + " "));
+        filterStream.filter(i -> i%2 == 0).filter(i -> i==2).forEach(value -> System.out.print(value + " "));
         blank();
 
         // sorted
@@ -116,6 +116,9 @@ public class Stream_Calculate {
     public void l29_중간연산_Comparator메서드() {
         // comparing()
         // example.StreamEx1.java 참고
+        Comparator<String> comparator = ((a,b) -> (a.length()+1) - b.length());
+        System.out.println(comparator.compare("abc","absdbs"));     // 이 메서드의 결과는 Comparator의 객체에
+        Comparator<String> comparator2 = (a,b) -> (a.length()+1-b.length()+1);
 
         /*
         *  Comparator 인터페이스에 대해서
@@ -155,6 +158,27 @@ public class Stream_Calculate {
     void blank() {
         System.out.println();
         System.out.println("-----------------");
+    }
+
+    @Test
+    public void l32_중간연산_peek() {
+
+        String[] strArr = { "1", "100", "ab", "한글", "한글과 english" };
+
+        Stream.of(strArr).filter(s -> s.length() > 2)
+                .peek(System.out::println)
+                .map(s -> s.toUpperCase())
+                .peek(System.out::println)
+                .forEach(System.out::println);
+    }
+
+    @Test
+    public void l33_중간연산_flatMap() {
+
+        Stream<String[]> strArrStream = Stream.of(new String[] {"abc","def","ghi"}, new String[] {"ABC","DEF","GHI"});
+
+//        Stream<Stream<String>> strStream = strArrStream.map(Arrays::stream);
+        Stream<String> strStream = strArrStream.flatMap(Arrays::stream);
     }
 }
 
