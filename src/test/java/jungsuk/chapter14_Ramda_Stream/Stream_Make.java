@@ -1,7 +1,7 @@
 package jungsuk.chapter14_Ramda_Stream;
 
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.List;
