@@ -18,7 +18,7 @@ import java.util.Stack;
  * -----------------------------------------------------------
  * 2022-01-13   윤신영     최초 생성
  */
-public class RemoveDuplication {
+public class RemoveDuplication_6 {
 
     public static void main(String[] args){
         String input = "ksekkset";

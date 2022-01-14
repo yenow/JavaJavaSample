@@ -16,7 +16,7 @@ import java.util.Arrays;
  * -----------------------------------------------------------
  * 2022-01-11   윤신영     최초 생성
  */
-public class BestLongWord {
+public class BestLongWord_3 {
 
     static String solution (String input) {
         String result = "";

@@ -1,8 +1,7 @@
 package jungsuk.chapter12_Generic;
 
-import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 
 /*

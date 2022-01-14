@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * -----------------------------------------------------------
  * 2022-01-09   윤신영     최초 생성
  */
-public class FindString {
+public class FindString_1 {
 
     public static int findStringCount(String string, String character) {
         System.out.println("string.chars().count() : " + string.chars().count());

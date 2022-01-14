@@ -14,7 +14,7 @@ import java.util.Scanner;
  * -----------------------------------------------------------
  * 2022-01-12   윤신영     최초 생성
  */
-public class ReverseWord {
+public class ReverseWord_4 {
 
     public static void main(String[] args){
 //        String[] inputs = {"3","good","Time","Big"};

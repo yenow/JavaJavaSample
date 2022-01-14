@@ -15,7 +15,7 @@ import java.util.Stack;
  * -----------------------------------------------------------
  * 2022-01-12   윤신영     최초 생성
  */
-public class ReverseSpecificLetter {
+public class ReverseSpecificLetter_5 {
 
     public static void main(String[] args){
         String input = "a#b!GE*T@S";

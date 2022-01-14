@@ -2,7 +2,6 @@ package codingTest.inflearn.chapter1;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 
 /**
  * packageName : codingTest.inflearn.chapter1
@@ -15,7 +14,7 @@ import org.junit.runner.RunWith;
  * -----------------------------------------------------------
  * 2022-01-11   윤신영     최초 생성
  */
-public class ChangeUpperAndRowerCase {
+public class ChangeUpperAndRowerCase_2 {
 
     static String solution (String input) {
 
