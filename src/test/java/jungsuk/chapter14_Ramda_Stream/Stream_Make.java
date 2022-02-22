@@ -106,6 +106,11 @@ public class Stream_Make {
         Stream<String> strStream2 = Stream.of(new String[] {"a","b","c"});
         Stream<String> strStream3 = Arrays.stream(new String[] {"a","b","c"});
         Stream<String> strStream4 = Arrays.stream(new String[] {"a","b","c"},0,3);
+
+        IntStream intStream1 = IntStream.of(1,2,3,4,5);
+        int[] ints = new int[] {1,2,3,4,5};
+        IntStream intStream2 = IntStream.of(ints);
+        IntStream intStream3 = Arrays.stream(ints);
     }
 
     /*
