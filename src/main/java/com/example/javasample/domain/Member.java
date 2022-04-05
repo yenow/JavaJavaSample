@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @Builder
-@ToString(of = {"id", "username", "age"})
+@ToString(of = {"id", "username", "age", "team"})
 public class Member {
     @Id
     @GeneratedValue
@@ -22,6 +22,10 @@ public class Member {
 
     @Embedded
     private Address homeAddress;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id")
+    private Team team;
 
     @Builder.Default
     @ElementCollection
@@ -34,23 +38,6 @@ public class Member {
     @JoinColumn(name = "member_id")
     private List<AddressEntity> addressHistory = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team_id")
-    private Team team;
-
-    public Member(String username) {
-        this(username, 0);
-    }
-    public Member(String username, int age) {
-        this(username, age, null);
-    }
-    public Member(String username, int age, Team team) {
-        this.username = username;
-        this.age = age;
-        if (team != null) {
-            changeTeam(team);
-        }
-    }
     public void changeTeam(Team team) {
         this.team = team;
         team.getMembers().add(this);

@@ -1,9 +1,6 @@
 package com.example.javasample.jpa;
 
-import com.example.javasample.domain.Address;
-import com.example.javasample.domain.Member;
-import com.example.javasample.domain.User;
-import com.example.javasample.domain.UserRepository;
+import com.example.javasample.domain.*;
 import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.assertj.core.api.Assertions;
@@ -48,57 +45,31 @@ class JpaTest {
         // then
     }
 
-    @Transactional
-    @Rollback(false)
     @Test
-    void testValueCollection () {
+    @Transactional
+    void lazyLoadTest() {
+        // given
+        Team team = Team.builder().name("TeamA").build();
+        Team team2 = Team.builder().name("TeamB").build();
+        Member member = Member.builder().username("userName1").team(team).build();
+        Member member2 = Member.builder().username("userName2").team(team2).build();
 
-        Member member = new Member();
-        member.setUsername("member1");
-        member.setHomeAddress(new Address("old","street","zipcode"));
-
-        member.getFavoriteFoods().add("치킨");
-        member.getFavoriteFoods().add("족발");
-        member.getFavoriteFoods().add("피자");
-
-//        member.getAddressHistory().add(new Address("old1","street1","zipcode"));
-//        member.getAddressHistory().add(new Address("old2","street2","zipcode"));
-
+        // when
+        em.persist(team);
+        em.persist(team2);
         em.persist(member);
+        em.persist(member2);
 
         em.flush();
         em.clear();
 
-        Member findMember = em.find(Member.class, member.getId());
+        List<Member> members = em.createQuery("select m from Member m join fetch m.team", Member.class).getResultList();
+        System.out.println("members = " + members);
+        members.forEach(member1 -> {
+            System.out.println(member1.getTeam().getName());
+        });
+        
 
-        // 치킨 -> 한식
-        findMember.getFavoriteFoods().remove("치킨");
-        findMember.getFavoriteFoods().add("한식");
-
-//        findMember.getAddressHistory().remove(new Address("old1","street1","zipcode"));
-//        findMember.getAddressHistory().add(new Address("newCity1","street1","zipcode"));
-    }
-
-    @Transactional
-    @Test
-    void searchAndParam() {
-        Member newMember = new Member();
-        newMember.setUsername("newMember1");
-        newMember.setHomeAddress(new Address("old","street","zipcode"));
-
-        JPAQueryFactory query = new JPAQueryFactory(em);
-//        Member findMember =
-//                query.select(member)
-//                .from(member)
-//                .where(
-//                    member.username.eq("member1"),
-//                    member.age.eq(10)
-//                ).fetchOne();
-
-        QueryResults<Member> results = query.selectFrom(member)
-                .fetchResults();
-
-        results.getTotal();
-        List<Member> content = results.getResults();
+        // then
     }
 }

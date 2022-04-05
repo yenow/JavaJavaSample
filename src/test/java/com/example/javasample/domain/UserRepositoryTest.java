@@ -1,5 +1,6 @@
 package com.example.javasample.domain;
 
+import com.example.javasample.SpringJUnitConfigIntegrationTest;
 import com.querydsl.core.QueryResults;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.assertj.core.api.Assertions;
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
@@ -16,6 +18,7 @@ import java.util.stream.IntStream;
 
 import static com.example.javasample.domain.QMember.*;
 import static org.junit.jupiter.api.Assertions.*;
+
 
 @SpringBootTest
 class UserRepositoryTest {

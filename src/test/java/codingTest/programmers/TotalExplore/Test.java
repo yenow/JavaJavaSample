@@ -3,6 +3,7 @@ package codingTest.programmers.TotalExplore;
 import java.util.Arrays;
 
 class Solution {
+
 	public int[] solution(int[] answers) {
 		int[] score = new int[] { 0, 0, 0 };
 		int[] student1 = { 1, 2, 3, 4, 5 };

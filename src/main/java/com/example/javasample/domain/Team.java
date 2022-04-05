@@ -17,9 +17,6 @@ public class Team {
     private String name;
 
     @Builder.Default
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY)
     private List<Member> members = new ArrayList<>();
-    public Team(String name) {
-        this.name = name;
-    }
 }
