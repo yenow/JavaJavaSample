@@ -1,5 +1,7 @@
 package codingTest.programmers.TotalExplore;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 
 class Solution {
@@ -44,11 +46,16 @@ class Solution {
 	}
 }
 
-public class Test {
+public class TestClass {
 
 	public static void main(String[] args) {
 		int[] answers = { 1, 2, 3, 4, 5 };
 		Solution s = new Solution();
 		Arrays.stream(s.solution(answers)).forEach(x -> System.out.print(x + " "));
+	}
+
+	@Test
+	void test() {
+
 	}
 }
