@@ -1,4 +1,4 @@
-package codingTest.programmers.TotalExplore;
+package codingTest.programmers.totalExplore.test1;
 
 import org.junit.jupiter.api.Test;
 

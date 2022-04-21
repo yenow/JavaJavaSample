@@ -1,4 +1,4 @@
-package codingTest.programmers.TotalExplore.findPrimeNumber;
+package codingTest.programmers.totalExplore.test2;
 
 import org.junit.jupiter.api.Test;
 
